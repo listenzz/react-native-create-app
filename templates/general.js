@@ -299,10 +299,11 @@ buck-out/
     name: () => '.prettierrc.js',
     content: () => `module.exports = {
   semi: false,
-  bracketSpacing: false,
   jsxBracketSameLine: true,
   singleQuote: true,
   trailingComma: 'all',
+  printWidth: 120,
+  tabWidth: 2,
 }`,
   },
   {
