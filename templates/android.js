@@ -4,7 +4,7 @@ module.exports = platform => [
     content: ({ name }) => `rootProject.name = '${name}'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'	
-`,
+`
   },
   {
     name: () => `android/build.gradle`,
@@ -46,7 +46,7 @@ allprojects {
 		maven { url 'https://jitpack.io' }
 	}
 }
-	`,
+	`
   },
   {
     name: () => 'android/app/build.gradle',
@@ -146,36 +146,49 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-`,
+`
   },
   {
     name: () => `android/app/src/main/AndroidManifest.xml`,
-    content: ({ packageIdentifier }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="${packageIdentifier}">
+    content: ({
+      packageIdentifier
+    }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="${packageIdentifier}">
 
-<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.INTERNET" />
 
-<application
-	android:name=".MainApplication"
-	android:label="@string/app_name"
-	android:icon="@mipmap/ic_launcher"
-	android:roundIcon="@mipmap/ic_launcher_round"
-	android:allowBackup="false"
-	android:theme="@style/AppTheme">
-	<activity
-	android:name=".MainActivity"
-	android:label="@string/app_name"
-	android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-	android:windowSoftInputMode="adjustResize">
-	<intent-filter>
-		<action android:name="android.intent.action.MAIN" />
-		<category android:name="android.intent.category.LAUNCHER" />
-	</intent-filter>
-	</activity>
-	<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-</application>
+	<application
+		android:name=".MainApplication"
+		android:label="@string/app_name"
+		android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:allowBackup="false"
+		android:theme="@style/AppTheme">
 
-</manifest>`,
+		<meta-data
+			android:name="android.max_aspect"
+			android:value="2.4" />
+		<meta-data
+			android:name="android.notch_support"
+			android:value="true" />
+		<meta-data
+			android:name="notch.config"
+			android:value="portrait|landscape" />
+
+		<activity
+			android:name=".MainActivity"
+			android:label="@string/app_name"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+			android:windowSoftInputMode="adjustResize">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+	</application>
+
+</manifest>`
   },
   {
     name: ({ packageIdentifier }) =>
@@ -186,7 +199,7 @@ import com.navigationhybrid.ReactAppCompatActivity;
 
 public class MainActivity extends ReactAppCompatActivity {
 
-}`,
+}`
   },
   {
     name: ({ packageIdentifier }) =>
@@ -268,6 +281,6 @@ public class MainApplication extends Application implements ReactApplication {
 			}
 		}
 	}
-}`,
-  },
+}`
+  }
 ];

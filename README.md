@@ -1,4 +1,4 @@
-# create-react-create-lib
+# react-native-create-app
 
 一行命令创建 React Native 项目
 
@@ -22,7 +22,7 @@ npm i -g @react-native-community/cli
 clone 本库
 
 ```
-git clone git@github.com:listenzz/react-native-create.git
+git clone git@github.com:listenzz/react-native-create-app.git
 ```
 
 cd 到本库根目录
@@ -30,7 +30,7 @@ cd 到本库根目录
 如果之前安装过，先卸载
 
 ```
-$ npm uninstall -g react-native-create
+$ npm uninstall -g react-native-create-app
 ```
 
 安装本库
@@ -44,13 +44,13 @@ $ npm install -g .
 Navigate into an empty directory to execute the command.
 
 ```
-$ react-native-create MyApp
+$ react-native-create-app MyApp
 ```
 
 This will create the folder `MyApp` in which the project will be created in.
 
 ```
-Usage: react-native-create [options] <name>
+Usage: react-native-create-app [options] <name>
 
 creates a react native project.
 

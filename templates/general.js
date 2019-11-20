@@ -3,7 +3,7 @@ module.exports = [
     name: () => 'README.md',
     content: ({ name }) => {
       return `# ${name}`;
-    },
+    }
   },
   {
     name: () => 'package.json',
@@ -33,7 +33,7 @@ module.exports = [
   },
   "dependencies": {
     "react": "16.9.0",
-    "react-native": "0.61.3",
+    "react-native": "^0.61.4",
     "react-native-navigation-hybrid": "^0.17.17"
   },
   "devDependencies": {
@@ -67,13 +67,12 @@ module.exports = [
     ]
   }
 }
-`,
+`
   },
   {
     name: () => 'index.js',
-    content: ({ name }) =>
-      `import App from './App'
-import {ReactRegistry, Garden, Navigator} from 'react-native-navigation-hybrid'
+    content: ({ name }) => `import App from './App'
+import { ReactRegistry, Garden, Navigator } from 'react-native-navigation-hybrid'
 
 // 配置全局样式
 Garden.setStyle({
@@ -91,10 +90,10 @@ ReactRegistry.endRegisterComponent()
 
 Navigator.setRoot({
   stack: {
-    children: [{screen: {moduleName: 'Home'}}],
+    children: [{ screen: { moduleName: 'Home' } }],
   },
 })
-`,
+`
   },
   {
     name: () => 'App.tsx',
@@ -107,8 +106,8 @@ Navigator.setRoot({
  */
 
 import React from 'react'
-import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native'
-import {NavigationItem} from 'react-native-navigation-hybrid'
+import { SafeAreaView, StyleSheet, ScrollView, View, Text } from 'react-native'
+import { NavigationItem } from 'react-native-navigation-hybrid'
 import {
   Header,
   LearnMoreLinks,
@@ -131,9 +130,7 @@ export default class App extends React.Component {
     return (
       <>
         <SafeAreaView>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
+          <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
             <Header />
             {(global as any).HermesInternal == null ? null : (
               <View style={styles.engine}>
@@ -144,8 +141,8 @@ export default class App extends React.Component {
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Step One</Text>
                 <Text style={styles.sectionDescription}>
-                  Edit <Text style={styles.highlight}>App.js</Text> to change
-                  this screen and then come back to see your edits.
+                  Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
+                  come back to see your edits.
                 </Text>
               </View>
               <View style={styles.sectionContainer}>
@@ -213,7 +210,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 })
-   `,
+`
   },
   {
     name: () => '.gitignore',
@@ -281,19 +278,19 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-`,
+`
   },
   {
     name: () => '.gitattributes',
     content: () => `*.pbxproj -text
-`,
+`
   },
   {
     name: () => '.eslintrc.js',
     content: () => `module.exports = {
   root: true,
   extends: ['@react-native-community', 'plugin:prettier/recommended', 'prettier/react'],
-}`,
+}`
   },
   {
     name: () => '.prettierrc.js',
@@ -302,9 +299,8 @@ buck-out/
   jsxBracketSameLine: true,
   singleQuote: true,
   trailingComma: 'all',
-  printWidth: 120,
-  tabWidth: 2,
-}`,
+  printWidth: 100,
+}`
   },
   {
     name: () => 'babel.config.js',
@@ -313,7 +309,7 @@ buck-out/
   presets: ['module:metro-react-native-babel-preset'],
 }
 `;
-    },
+    }
   },
   {
     name: () => 'metro.config.js',
@@ -336,7 +332,7 @@ module.exports = {
   },
 }
 `;
-    },
+    }
   },
   {
     name: () => 'tsconfig.json',
@@ -400,6 +396,6 @@ module.exports = {
 },
 "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
-    `,
-  },
+    `
+  }
 ];
