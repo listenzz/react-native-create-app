@@ -10,7 +10,6 @@
 
 ```
 npm uninstall -g react-native-cli
-
 ```
 
 安装社区版 cli
