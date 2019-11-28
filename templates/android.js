@@ -176,6 +176,7 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 			android:value="portrait|landscape" />
 
 		<activity
+			android:launchMode="singleTask"
 			android:name=".MainActivity"
 			android:label="@string/app_name"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
