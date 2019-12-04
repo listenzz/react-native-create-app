@@ -1,7 +1,11 @@
 module.exports = platform => [
   {
     name: () => 'ios/Podfile',
-    content: ({ name }) => `platform :ios, '9.0'
+    content: ({ name }) => `source 'https://github.com/artsy/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+    
+platform :ios, '9.0'
+inhibit_all_warnings!
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target '${name}' do
@@ -37,7 +41,7 @@ target '${name}' do
     pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
     use_native_modules!
-end`,
+end`
   },
   {
     name: ({ name }) => `ios/${name}/Info.plist`,
@@ -93,7 +97,7 @@ end`,
         <string>UIInterfaceOrientationPortrait</string>
     </array>
 </dict>
-</plist>`,
+</plist>`
   },
   {
     name: ({ name }) => `ios/${name}.xcodeproj/project.pbxproj`,
@@ -440,7 +444,7 @@ end`,
 /* End XCConfigurationList section */
     };
     rootObject = 91887257236AD544003DC79E /* Project object */;
-}`,
+}`
   },
   {
     name: ({ name }) => `ios/${name}/Base.lproj/LaunchScreen.storyboard`,
@@ -468,6 +472,6 @@ end`,
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-</document>`,
-  },
+</document>`
+  }
 ];
