@@ -149,6 +149,13 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 `
   },
   {
+    name: () => `android/app/src/main/res/values/strings.xml`,
+    content: ({ name }) => `<resources>
+	<string name="app_name">${name}</string>
+</resources>
+  `
+  },
+  {
     name: () => `android/app/src/main/AndroidManifest.xml`,
     content: ({
       packageIdentifier
