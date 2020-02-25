@@ -1,8 +1,7 @@
 module.exports = platform => [
   {
-    name: () => 'ios/Podfile',
-    content: ({ name }) => `source 'https://github.com/artsy/Specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
+    name: () => "ios/Podfile",
+    content: ({ name }) => `source 'https://github.com/CocoaPods/Specs.git'
     
 platform :ios, '9.0'
 inhibit_all_warnings!
