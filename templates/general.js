@@ -1,12 +1,12 @@
 module.exports = [
   {
-    name: () => 'README.md',
+    name: () => "README.md",
     content: ({ name }) => {
       return `# ${name}`;
     }
   },
   {
-    name: () => 'package.json',
+    name: () => "package.json",
     content: ({ name }) => `{
   "name": "${name}",
   "version": "1.0.0",
@@ -34,26 +34,24 @@ module.exports = [
   "dependencies": {
     "react": "16.9.0",
     "react-native": "^0.61.4",
-    "react-native-navigation-hybrid": "^0.18.0"
+    "react-native-navigation-hybrid": "^0.19.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/runtime": "^7.4.3",
-    "@react-native-community/eslint-config": "0.0.5",
+    "@gfez/eslint-config-react-native": "^1.0.0",
     "@types/jest": "^24.0.11",
     "@types/react": "^16.8.14",
     "@types/react-native": "^0.60.21",
     "@types/react-test-renderer": "16.9.0",
     "babel-jest": "^24.7.1",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^6.5.0",
     "husky": "^3.0.9",
     "jest": "^24.7.1",
     "lint-staged": "^9.4.2",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-native-testing-library": "^1.7.0",
     "react-test-renderer": "16.9.0",
-    "typescript": "3.5.3"
+    "typescript": "^3.7.3"
   },
   "jest": {
     "preset": "react-native",
@@ -70,7 +68,7 @@ module.exports = [
 `
   },
   {
-    name: () => 'index.js',
+    name: () => "index.js",
     content: ({ name }) => `import App from './App'
 import { ReactRegistry, Garden, Navigator } from 'react-native-navigation-hybrid'
 
@@ -96,7 +94,7 @@ Navigator.setRoot({
 `
   },
   {
-    name: () => 'App.tsx',
+    name: () => "App.tsx",
     content: ({ name }) => `/**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -213,7 +211,7 @@ const styles = StyleSheet.create({
 `
   },
   {
-    name: () => '.gitignore',
+    name: () => ".gitignore",
     content: () => `# OSX
 #
 .DS_Store
@@ -281,19 +279,19 @@ buck-out/
 `
   },
   {
-    name: () => '.gitattributes',
+    name: () => ".gitattributes",
     content: () => `*.pbxproj -text
 `
   },
   {
-    name: () => '.eslintrc.js',
+    name: () => ".eslintrc.js",
     content: () => `module.exports = {
   root: true,
-  extends: ['@react-native-community', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
 }`
   },
   {
-    name: () => '.prettierrc.js',
+    name: () => ".prettierrc.js",
     content: () => `module.exports = {
   semi: false,
   jsxBracketSameLine: true,
@@ -303,7 +301,7 @@ buck-out/
 }`
   },
   {
-    name: () => 'babel.config.js',
+    name: () => "babel.config.js",
     content: () => {
       return `module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
@@ -312,7 +310,7 @@ buck-out/
     }
   },
   {
-    name: () => 'metro.config.js',
+    name: () => "metro.config.js",
     content: () => {
       return `/**
  * Metro configuration for React Native
@@ -335,7 +333,7 @@ module.exports = {
     }
   },
   {
-    name: () => 'tsconfig.json',
+    name: () => "tsconfig.json",
     content: () => `{
 "compilerOptions": {
   /* Basic Options */
