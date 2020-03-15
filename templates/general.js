@@ -3,7 +3,7 @@ module.exports = [
     name: () => 'README.md',
     content: ({ name }) => {
       return `# ${name}`
-    }
+    },
   },
   {
     name: () => 'package.json',
@@ -65,7 +65,7 @@ module.exports = [
     ]
   }
 }
-`
+`,
   },
   {
     name: () => 'index.js',
@@ -91,7 +91,7 @@ Navigator.setRoot({
     children: [{ screen: { moduleName: 'Home' } }],
   },
 })
-`
+`,
   },
   {
     name: () => 'App.tsx',
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 })
-`
+`,
   },
   {
     name: () => '.gitignore',
@@ -276,19 +276,19 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-`
+`,
   },
   {
     name: () => '.gitattributes',
     content: () => `*.pbxproj -text
-`
+`,
   },
   {
     name: () => '.eslintrc.js',
     content: () => `module.exports = {
   root: true,
   extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
-}`
+}`,
   },
   {
     name: () => '.prettierrc.js',
@@ -298,7 +298,7 @@ buck-out/
   singleQuote: true,
   trailingComma: 'all',
   printWidth: 100,
-}`
+}`,
   },
   {
     name: () => 'babel.config.js',
@@ -307,7 +307,7 @@ buck-out/
   presets: ['module:metro-react-native-babel-preset'],
 }
 `
-    }
+    },
   },
   {
     name: () => 'metro.config.js',
@@ -330,7 +330,7 @@ module.exports = {
   },
 }
 `
-    }
+    },
   },
   {
     name: () => 'tsconfig.json',
@@ -394,6 +394,6 @@ module.exports = {
 },
 "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
-    `
-  }
+    `,
+  },
 ]

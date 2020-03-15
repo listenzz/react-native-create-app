@@ -4,7 +4,7 @@ module.exports = platform => [
     content: ({ name }) => `rootProject.name = '${name}'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'	
-`
+`,
   },
   {
     name: () => `android/build.gradle`,
@@ -46,7 +46,7 @@ allprojects {
 		maven { url 'https://jitpack.io' }
 	}
 }
-	`
+	`,
   },
   {
     name: () => 'android/app/build.gradle',
@@ -146,19 +146,19 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-`
+`,
   },
   {
     name: () => `android/app/src/main/res/values/strings.xml`,
     content: ({ name }) => `<resources>
 	<string name="app_name">${name}</string>
 </resources>
-  `
+  `,
   },
   {
     name: () => `android/app/src/main/AndroidManifest.xml`,
     content: ({
-      packageIdentifier
+      packageIdentifier,
     }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="${packageIdentifier}">
 
@@ -196,7 +196,7 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 		<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 	</application>
 
-</manifest>`
+</manifest>`,
   },
   {
     name: ({ packageIdentifier }) =>
@@ -207,7 +207,7 @@ import com.navigationhybrid.ReactAppCompatActivity;
 
 public class MainActivity extends ReactAppCompatActivity {
 
-}`
+}`,
   },
   {
     name: ({ packageIdentifier }) =>
@@ -289,6 +289,6 @@ public class MainApplication extends Application implements ReactApplication {
 			}
 		}
 	}
-}`
-  }
-];
+}`,
+  },
+]
