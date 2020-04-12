@@ -1,4 +1,4 @@
-module.exports = platform => [
+module.exports = (platform) => [
   {
     name: () => 'ios/Podfile',
     content: ({ name }) => `platform :ios, '9.0'
@@ -29,7 +29,7 @@ target '${name}' do
     pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
     pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
     pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
-    pod 'ReactCommon/jscallinvoker', :path => "../node_modules/react-native/ReactCommon"
+    pod 'ReactCommon/callinvoker', :path => "../node_modules/react-native/ReactCommon"
     pod 'ReactCommon/turbomodule/core', :path => "../node_modules/react-native/ReactCommon"
     pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 

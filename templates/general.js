@@ -32,9 +32,9 @@ module.exports = [
     ]
   },
   "dependencies": {
-    "react": "16.9.0",
-    "react-native": "^0.61.4",
-    "react-native-navigation-hybrid": "^0.20.0"
+    "react": "16.11.0",
+    "react-native": "^0.62.2",
+    "react-native-navigation-hybrid": "^0.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -48,9 +48,9 @@ module.exports = [
     "husky": "^3.0.9",
     "jest": "^24.7.1",
     "lint-staged": "^9.4.2",
-    "metro-react-native-babel-preset": "^0.56.0",
+    "metro-react-native-babel-preset": "^0.58.0",
     "react-native-testing-library": "^1.7.0",
-    "react-test-renderer": "16.9.0",
+    "react-test-renderer": "16.11.0",
     "typescript": "^3.7.3"
   },
   "jest": {

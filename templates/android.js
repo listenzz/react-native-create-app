@@ -1,4 +1,4 @@
-module.exports = platform => [
+module.exports = (platform) => [
   {
     name: () => `android/settings.gradle`,
     content: ({ name }) => `rootProject.name = '${name}'
@@ -22,7 +22,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath("com.android.tools.build:gradle:3.4.2")
+		classpath("com.android.tools.build:gradle:3.5.2")
 
 		// NOTE: Do not place your application dependencies here; they belong
 		// in the individual module build.gradle files
@@ -109,6 +109,14 @@ android {
 			proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
 		}
 	}
+
+	packagingOptions {
+		pickFirst "lib/armeabi-v7a/libc++_shared.so"
+		pickFirst "lib/arm64-v8a/libc++_shared.so"
+		pickFirst "lib/x86/libc++_shared.so"
+		pickFirst "lib/x86_64/libc++_shared.so"
+	}
+
 	// applicationVariants are e.g. debug, release
 	applicationVariants.all { variant ->
 		variant.outputs.each { output ->
@@ -128,6 +136,7 @@ android {
 dependencies {
 	implementation fileTree(dir: "libs", include: ["*.jar"])
 	implementation "com.facebook.react:react-native:+"  // From node_modules
+	implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
 	if (enableHermes) {
 		def hermesPath = "../../node_modules/hermes-engine/android/";
@@ -160,6 +169,7 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
     content: ({
       packageIdentifier,
     }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	package="${packageIdentifier}">
 
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -170,6 +180,8 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 		android:icon="@mipmap/ic_launcher"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:allowBackup="false"
+		tools:targetApi="28"
+		tools:ignore="GoogleAppIndexingWarning"
 		android:theme="@style/AppTheme">
 
 		<meta-data
@@ -215,7 +227,6 @@ public class MainActivity extends ReactAppCompatActivity {
     content: ({ packageIdentifier }) => `package ${packageIdentifier};
 
 import android.app.Application;
-import android.content.Context;
 
 import com.facebook.common.logging.FLog;
 import com.facebook.react.PackageList;
@@ -223,7 +234,6 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.navigationhybrid.ReactBridgeManager;
 
@@ -258,37 +268,11 @@ public class MainApplication extends Application implements ReactApplication {
 	public void onCreate() {
 		super.onCreate();
 		SoLoader.init(this, /* native exopackage */ false);
-		initializeFlipper(this); // Remove this line if you don't want Flipper enabled
 		ReactBridgeManager bridgeManager = ReactBridgeManager.get();
 		bridgeManager.install(getReactNativeHost());
 		FLog.setMinimumLoggingLevel(FLog.INFO);
 	}
-
-	/**
-	 * Loads Flipper in React Native templates.
-	 *
-	 * @param context
-	 */
-	private static void initializeFlipper(Context context) {
-		if (BuildConfig.DEBUG) {
-			try {
-				/*
-				We use reflection here to pick up the class that initializes Flipper,
-				since Flipper library is not available in release mode
-				*/
-				Class<?> aClass = Class.forName("com.facebook.flipper.ReactNativeFlipper");
-				aClass.getMethod("initializeFlipper", Context.class).invoke(null, context);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	
 }`,
   },
 ]
