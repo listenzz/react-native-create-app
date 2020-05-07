@@ -243,6 +243,8 @@ build/
 .gradle
 local.properties
 *.iml
+.project
+*/.settings/
 
 # Visual Studio Code
 #
