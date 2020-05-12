@@ -196,7 +196,7 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 
 		<activity
 			android:name=".MainActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
 			android:label="@string/app_name"
 			android:launchMode="singleTask"
 			android:windowSoftInputMode="adjustResize">

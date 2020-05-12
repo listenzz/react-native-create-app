@@ -34,21 +34,22 @@ module.exports = [
   "dependencies": {
     "react": "16.11.0",
     "react-native": "^0.62.2",
+    "react-native-fast-image": "^8.1.5",
     "react-native-navigation-hybrid": "^0.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/runtime": "^7.4.3",
     "@gfez/eslint-config-react-native": "^1.0.0",
-    "@types/jest": "^24.0.11",
+    "@types/jest": "^25.2.1",
     "@types/react": "^16.8.14",
-    "@types/react-native": "^0.60.21",
+    "@types/react-native": "^0.62.7",
     "@types/react-test-renderer": "16.9.0",
-    "babel-jest": "^24.7.1",
-    "husky": "^3.0.9",
-    "jest": "^24.7.1",
-    "lint-staged": "^9.4.2",
-    "metro-react-native-babel-preset": "^0.58.0",
+    "babel-jest": "^26.0.1",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.2",
+    "metro-react-native-babel-preset": "^0.59.0",
     "react-native-testing-library": "^1.7.0",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.7.3"
@@ -96,7 +97,7 @@ Navigator.setRoot({
   {
     name: () => 'App.tsx',
     content: ({ name }) => `/**
- * Sample React Native App
+* Sample React Native App
  * https://github.com/facebook/react-native
  *
  * @format
@@ -105,69 +106,60 @@ Navigator.setRoot({
 
 import React from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Text } from 'react-native'
-import { NavigationItem } from 'react-native-navigation-hybrid'
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen'
+import { withNavigationItem } from 'react-native-navigation-hybrid'
+import { Colors, DebugInstructions, ReloadInstructions } from 'react-native/Libraries/NewAppScreen'
 
-export default class App extends React.Component {
-  static navigationItem: NavigationItem = {
-    titleItem: {
-      title: '${name}',
-    },
-    rightBarButtonItem: {
-      title: 'push',
-      action: navigator => navigator.push('Home'),
-    },
-  }
-  render() {
-    return (
-      <>
-        <SafeAreaView>
-          <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-            <Header />
-            {(global as any).HermesInternal == null ? null : (
-              <View style={styles.engine}>
-                <Text style={styles.footer}>Engine: Hermes</Text>
-              </View>
-            )}
-            <View style={styles.body}>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Step One</Text>
-                <Text style={styles.sectionDescription}>
-                  Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
-                  come back to see your edits.
-                </Text>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>See Your Changes</Text>
-                <Text style={styles.sectionDescription}>
-                  <ReloadInstructions />
-                </Text>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Debug</Text>
-                <Text style={styles.sectionDescription}>
-                  <DebugInstructions />
-                </Text>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Learn More</Text>
-                <Text style={styles.sectionDescription}>
-                  Read the docs to discover what to do next:
-                </Text>
-              </View>
-              <LearnMoreLinks />
+export default withNavigationItem({
+  titleItem: {
+    title: 'MyProject',
+  },
+  rightBarButtonItem: {
+    title: 'push',
+    action: navigator => navigator.push('Home'),
+  },
+})(App)
+
+function App() {
+  return (
+    <>
+      <SafeAreaView>
+        <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
+          {(global as any).HermesInternal == null ? null : (
+            <View style={styles.engine}>
+              <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
-          </ScrollView>
-        </SafeAreaView>
-      </>
-    )
-  }
+          )}
+          <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Step One</Text>
+              <Text style={styles.sectionDescription}>
+                Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
+                come back to see your edits.
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>See Your Changes</Text>
+              <Text style={styles.sectionDescription}>
+                <ReloadInstructions />
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Debug</Text>
+              <Text style={styles.sectionDescription}>
+                <DebugInstructions />
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionDescription}>
+                Read the docs to discover what to do next:
+              </Text>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
