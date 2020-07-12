@@ -19,16 +19,16 @@ $ react-native-create-app MyApp
 This will create the folder `MyApp` in which the project will be created in.
 
 ```
-Usage: react-native-create-app [options] <name>
+Usage: react-native-create-app [options] <projectName>
 
 creates a react native project.
 
 Options:
-  -V, --version                                 output the version number
-  -p, --package-identifier [packageIdentifier]  Application Id on Android or Bundle Identifier on iOS (default: "com.example.(name in lower case)")
-  -d, --project-dir [projectDir]                The project dir name (default: "Same as the project name")
-  --license [license]                           The license type (default: "MIT")
-  -h, --help                                    output usage information
+  -V, --version                      output the version number
+  -p, --package-identifier [string]  Application Id on Android or Bundle Identifier on iOS (default: "com.example.(projectName in lower case)")
+  -d, --directory [string]           Uses a custom directory instead of `<projectName>`
+  --license [string]                 The license type (default: "MIT")
+  -h, --help                         output usage information
 ```
 
 ## License

@@ -12,17 +12,17 @@ include ':app'
 
 buildscript {
 	ext {
-		buildToolsVersion = "28.0.3"
+		buildToolsVersion = "29.0.2"
 		minSdkVersion = 16
-		compileSdkVersion = 28
-		targetSdkVersion = 28
+		compileSdkVersion = 29
+		targetSdkVersion = 29
 	}
 	repositories {
 		google()
 		jcenter()
 	}
 	dependencies {
-		classpath("com.android.tools.build:gradle:3.5.2")
+		classpath("com.android.tools.build:gradle:3.5.3")
 
 		// NOTE: Do not place your application dependencies here; they belong
 		// in the individual module build.gradle files
@@ -110,13 +110,6 @@ android {
 		}
 	}
 
-	packagingOptions {
-		pickFirst "lib/armeabi-v7a/libc++_shared.so"
-		pickFirst "lib/arm64-v8a/libc++_shared.so"
-		pickFirst "lib/x86/libc++_shared.so"
-		pickFirst "lib/x86_64/libc++_shared.so"
-	}
-
 	// applicationVariants are e.g. debug, release
 	applicationVariants.all { variant ->
 		variant.outputs.each { output ->
@@ -180,8 +173,6 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 		android:icon="@mipmap/ic_launcher"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:allowBackup="false"
-		tools:targetApi="28"
-		tools:ignore="GoogleAppIndexingWarning"
 		android:theme="@style/AppTheme">
 
 		<meta-data
@@ -196,8 +187,8 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 
 		<activity
 			android:name=".MainActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
 			android:label="@string/app_name"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
 			android:launchMode="singleTask"
 			android:windowSoftInputMode="adjustResize">
 			<intent-filter>

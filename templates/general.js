@@ -14,10 +14,10 @@ module.exports = [
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
     "test": "jest",
     "tsc": "tsc --noEmit",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx"
   },
   "husky": {
     "hooks": {
@@ -32,14 +32,14 @@ module.exports = [
     ]
   },
   "dependencies": {
-    "react": "16.11.0",
-    "react-native": "^0.62.2",
+    "react": "16.13.1",
+    "react-native": "^0.63.0",
     "react-native-fast-image": "^8.1.5",
     "react-native-navigation-hybrid": "^0.23.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/runtime": "^7.4.3",
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
     "@gfez/eslint-config-react-native": "^1.0.0",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.8.14",
@@ -51,7 +51,7 @@ module.exports = [
     "lint-staged": "^10.2.2",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-native-testing-library": "^1.7.0",
-    "react-test-renderer": "16.11.0",
+    "react-test-renderer": "16.13.1",
     "typescript": "^3.7.3"
   },
   "jest": {
@@ -227,6 +227,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+IDEWorkspaceChecks.plist
 
 # Android/IntelliJ
 #
@@ -237,10 +238,6 @@ local.properties
 *.iml
 .project
 */.settings/
-
-# Visual Studio Code
-#
-.vscode/
 
 # node.js
 #
