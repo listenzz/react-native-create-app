@@ -35,7 +35,7 @@ module.exports = [
     "react": "16.13.1",
     "react-native": "^0.63.0",
     "react-native-fast-image": "^8.1.5",
-    "react-native-navigation-hybrid": "^0.23.0"
+    "react-native-navigation-hybrid": "^0.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
