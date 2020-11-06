@@ -72,10 +72,12 @@ module.exports = [
     name: () => 'index.js',
     content: ({ name }) => `import App from './App'
 import { ReactRegistry, Garden, Navigator } from 'react-native-navigation-hybrid'
+import { Platform } from 'react-native'
 
 // 配置全局样式
 Garden.setStyle({
   topBarStyle: 'dark-content',
+  statusBarColorAndroid: Platform.Version > 21 ? undefined : '#4A4A4A',
 })
 
 // 重要必须
@@ -97,7 +99,7 @@ Navigator.setRoot({
   {
     name: () => 'App.tsx',
     content: ({ name }) => `/**
-* Sample React Native App
+ * Sample React Native App
  * https://github.com/facebook/react-native
  *
  * @format
@@ -105,7 +107,7 @@ Navigator.setRoot({
  */
 
 import React from 'react'
-import { SafeAreaView, StyleSheet, ScrollView, View, Text } from 'react-native'
+import { StyleSheet, ScrollView, View, Text } from 'react-native'
 import { withNavigationItem } from 'react-native-navigation-hybrid'
 import { Colors, DebugInstructions, ReloadInstructions } from 'react-native/Libraries/NewAppScreen'
 
@@ -115,63 +117,54 @@ export default withNavigationItem({
   },
   rightBarButtonItem: {
     title: 'push',
-    action: navigator => navigator.push('Home'),
+    action: (navigator) => navigator.push('Home'),
   },
 })(App)
 
 function App() {
   return (
-    <>
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-          {(global as any).HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
-                come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <ScrollView contentInsetAdjustmentBehavior="never" style={styles.scrollView}>
+      {(global as any).HermesInternal == null ? null : (
+        <View style={styles.engine}>
+          <Text style={styles.footer}>Engine: Hermes</Text>
+        </View>
+      )}
+      <View style={styles.sectionContainer}>
+        <Text style={styles.sectionTitle}>Step One</Text>
+        <Text style={styles.sectionDescription}>
+          Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
+          come back to see your edits.
+        </Text>
+      </View>
+      <View style={styles.sectionContainer}>
+        <Text style={styles.sectionTitle}>See Your Changes</Text>
+        <Text style={styles.sectionDescription}>
+          <ReloadInstructions />
+        </Text>
+      </View>
+      <View style={styles.sectionContainer}>
+        <Text style={styles.sectionTitle}>Debug</Text>
+        <Text style={styles.sectionDescription}>
+          <DebugInstructions />
+        </Text>
+      </View>
+      <View style={styles.sectionContainer}>
+        <Text style={styles.sectionTitle}>Learn More</Text>
+        <Text style={styles.sectionDescription}>
+          Read the docs to discover what to do next:
+        </Text>
+      </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: Colors.lighter,
+    backgroundColor: Colors.white,
   },
   engine: {
     position: 'absolute',
     right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
   },
   sectionContainer: {
     marginTop: 32,
