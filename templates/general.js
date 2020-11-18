@@ -35,7 +35,7 @@ module.exports = [
     "react": "16.13.1",
     "react-native": "^0.63.0",
     "react-native-fast-image": "^8.1.5",
-    "react-native-navigation-hybrid": "^0.27.0"
+    "react-native-navigation-hybrid": "^0.28.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -84,113 +84,81 @@ Garden.setStyle({
 ReactRegistry.startRegisterComponent()
 
 // 注意，你的每一个页面都需要注册
-ReactRegistry.registerComponent('Home', () => App)
+ReactRegistry.registerComponent('App', () => App)
 
 // 重要必须
 ReactRegistry.endRegisterComponent()
 
 Navigator.setRoot({
   stack: {
-    children: [{ screen: { moduleName: 'Home' } }],
+    children: [{ screen: { moduleName: 'App' } }],
   },
 })
 `,
   },
   {
     name: () => 'App.tsx',
-    content: ({ name }) => `/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React from 'react'
-import { StyleSheet, ScrollView, View, Text } from 'react-native'
+    content: ({ name }) => `import React, { useState } from 'react'
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
 import { withNavigationItem } from 'react-native-navigation-hybrid'
-import { Colors, DebugInstructions, ReloadInstructions } from 'react-native/Libraries/NewAppScreen'
 
-export default withNavigationItem({
-  titleItem: {
-    title: 'MyProject',
-  },
-  rightBarButtonItem: {
-    title: 'push',
-    action: (navigator) => navigator.push('Home'),
-  },
-})(App)
+interface Props {
+  name: string
+}
+
+function Welcome(props: Props) {
+  return <Text style={styles.welcome}>Hello {props.name}!</Text>
+}
 
 function App() {
+  const [name, setName] = useState('Sara')
+  const [text, setText] = useState('')
   return (
-    <ScrollView contentInsetAdjustmentBehavior="never" style={styles.scrollView}>
-      {(global as any).HermesInternal == null ? null : (
-        <View style={styles.engine}>
-          <Text style={styles.footer}>Engine: Hermes</Text>
-        </View>
-      )}
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Step One</Text>
-        <Text style={styles.sectionDescription}>
-          Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then
-          come back to see your edits.
-        </Text>
-      </View>
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>See Your Changes</Text>
-        <Text style={styles.sectionDescription}>
-          <ReloadInstructions />
-        </Text>
-      </View>
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Debug</Text>
-        <Text style={styles.sectionDescription}>
-          <DebugInstructions />
-        </Text>
-      </View>
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Learn More</Text>
-        <Text style={styles.sectionDescription}>
-          Read the docs to discover what to do next:
-        </Text>
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <Welcome name={name} />
+      <TextInput value={text} onChangeText={setText} style={styles.input} />
+      <Button title="确定" onPress={() => setName(text)} />
+    </View>
   )
 }
 
+export default withNavigationItem({
+  titleItem: {
+    title: '${name}',
+  },
+  rightBarButtonItem: {
+    title: 'push',
+    action: (navigator) => navigator.push('App'),
+  },
+})(App)
+
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.white,
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    paddingTop: 16,
+    paddingLeft: 32,
+    paddingRight: 32,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  welcome: {
+    backgroundColor: 'transparent',
+    fontSize: 17,
+    textAlign: 'center',
+    margin: 8,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  input: {
+    height: 40,
+    marginTop: 16,
+    marginBottom: 16,
+    paddingLeft: 8,
+    paddingRight: 8,
+    borderColor: '#cccccc',
+    borderWidth: 1,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  button: {
+    marginLeft: 32,
+    marginRight: 32,
   },
 })
 `,
