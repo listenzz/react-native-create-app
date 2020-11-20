@@ -107,7 +107,7 @@ interface Props {
 }
 
 function Welcome(props: Props) {
-  return <Text style={styles.welcome}>Hello {props.name}!</Text>
+  return <Text style={styles.text}>Hello {props.name}!</Text>
 }
 
 function App() {
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     paddingLeft: 32,
     paddingRight: 32,
   },
-  welcome: {
+  text: {
     backgroundColor: 'transparent',
     fontSize: 17,
     textAlign: 'center',
@@ -155,10 +155,6 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     borderColor: '#cccccc',
     borderWidth: 1,
-  },
-  button: {
-    marginLeft: 32,
-    marginRight: 32,
   },
 })
 `,
