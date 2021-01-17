@@ -35,7 +35,7 @@ module.exports = [
     "react": "16.13.1",
     "react-native": "^0.63.0",
     "react-native-fast-image": "^8.1.5",
-    "react-native-navigation-hybrid": "^0.28.0"
+    "hybrid-navigation": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -71,7 +71,7 @@ module.exports = [
   {
     name: () => 'index.js',
     content: ({ name }) => `import App from './App'
-import { ReactRegistry, Garden, Navigator } from 'react-native-navigation-hybrid'
+import { ReactRegistry, Garden, Navigator } from 'hybrid-navigation'
 import { Platform } from 'react-native'
 
 // 配置全局样式
@@ -100,7 +100,7 @@ Navigator.setRoot({
     name: () => 'App.tsx',
     content: ({ name }) => `import React, { useState } from 'react'
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
-import { withNavigationItem } from 'react-native-navigation-hybrid'
+import { withNavigationItem } from 'hybrid-navigation'
 
 interface Props {
   name: string

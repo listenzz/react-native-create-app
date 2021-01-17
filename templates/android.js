@@ -129,7 +129,7 @@ android {
 dependencies {
 	implementation fileTree(dir: "libs", include: ["*.jar"])
 	implementation "com.facebook.react:react-native:+"  // From node_modules
-	implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+	implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
 	if (enableHermes) {
 		def hermesPath = "../../node_modules/hermes-engine/android/";
@@ -206,7 +206,7 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
       `android/app/src/main/java/${packageIdentifier.split('.').join('/')}/MainActivity.java`,
     content: ({ packageIdentifier }) => `package ${packageIdentifier};
   
-import com.navigationhybrid.ReactAppCompatActivity;
+import com.reactnative.hybridnavigation.ReactAppCompatActivity;
 
 public class MainActivity extends ReactAppCompatActivity {
 
@@ -226,7 +226,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
-import com.navigationhybrid.ReactBridgeManager;
+import com.reactnative.hybridnavigation.ReactBridgeManager;
 
 public class MainApplication extends Application implements ReactApplication {
 

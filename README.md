@@ -1,6 +1,6 @@
 # react-native-create-app
 
-一行命令创建 React Native 项目，并和 [react-native-navigation-hybrid](https://github.com/listenzz/react-native-navigation-hybrid) 集成。
+一行命令创建 React Native 项目，并和 [hybrid-navigation](https://github.com/listenzz/hybrid-navigation) 集成。
 
 ## Installation
 
