@@ -1,52 +1,10 @@
-module.exports = (platform) => [
+module.exports = platform => [
   {
     name: () => `android/settings.gradle`,
     content: ({ name }) => `rootProject.name = '${name}'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'	
 `,
-  },
-  {
-    name: () => `android/build.gradle`,
-    content: () => `// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-	ext {
-		buildToolsVersion = "29.0.2"
-		minSdkVersion = 21
-		compileSdkVersion = 29
-		targetSdkVersion = 29
-	}
-	repositories {
-		google()
-		jcenter()
-	}
-	dependencies {
-		classpath("com.android.tools.build:gradle:3.5.3")
-
-		// NOTE: Do not place your application dependencies here; they belong
-		// in the individual module build.gradle files
-	}
-}
-
-allprojects {
-	repositories {
-		mavenLocal()
-		maven {
-			// All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-			url("$rootDir/../node_modules/react-native/android")
-		}
-		maven {
-			// Android JSC is installed from npm
-			url("$rootDir/../node_modules/jsc-android/dist")
-		}
-
-		google()
-		jcenter()
-		maven { url 'https://jitpack.io' }
-	}
-}
-	`,
   },
   {
     name: () => 'android/app/build.gradle',
@@ -67,6 +25,8 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
+	ndkVersion rootProject.ext.ndkVersion
+
 	compileSdkVersion rootProject.ext.compileSdkVersion
 
 	compileOptions {
@@ -86,7 +46,7 @@ android {
 			reset()
 			enable enableSeparateBuildPerCPUArchitecture
 			universalApk false  // If true, also generate a universal APK
-			include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+			include "arm64-v8a", "x86_64"
 		}
 	}
 	signingConfigs {
@@ -107,21 +67,6 @@ android {
 			signingConfig signingConfigs.debug
 			minifyEnabled enableProguardInReleaseBuilds
 			proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-		}
-	}
-
-	// applicationVariants are e.g. debug, release
-	applicationVariants.all { variant ->
-		variant.outputs.each { output ->
-			// For each separate APK per architecture, set a unique version code as described here:
-			// https://developer.android.com/studio/build/configure-apk-splits.html
-			def versionCodes = ["armeabi-v7a": 1, "x86": 2, "arm64-v8a": 3, "x86_64": 4]
-			def abi = output.getFilter(OutputFile.ABI)
-			if (abi != null) {  // null for the universal-debug, universal-release variants
-				output.versionCodeOverride =
-						versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
-			}
-
 		}
 	}
 }
@@ -159,9 +104,7 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
   },
   {
     name: () => `android/app/src/main/AndroidManifest.xml`,
-    content: ({
-      packageIdentifier,
-    }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    content: ({ packageIdentifier }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	package="${packageIdentifier}">
 
@@ -196,7 +139,6 @@ apply from: file("../../node_modules/@react-native-community/cli-platform-androi
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 	</application>
 
 </manifest>`,

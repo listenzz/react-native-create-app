@@ -32,26 +32,26 @@ module.exports = [
     ]
   },
   "dependencies": {
-    "react": "16.13.1",
-    "react-native": "^0.63.0",
+    "react": "17.0.1",
+    "react-native": "^0.64.0",
     "react-native-fast-image": "^8.1.5",
-    "hybrid-navigation": "^1.2.0"
+    "hybrid-navigation": "^1.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
+    "@babel/core": "^7.13.10",
+    "@babel/runtime": "^7.13.10",
     "@gfez/eslint-config-react-native": "^1.0.0",
-    "@types/jest": "^25.2.1",
-    "@types/react": "^16.8.14",
-    "@types/react-native": "^0.62.7",
-    "@types/react-test-renderer": "16.9.0",
-    "babel-jest": "^26.0.1",
+    "@types/jest": "^26.0.21",
+    "@types/react": "^17.0.1",
+    "@types/react-native": "^0.64.0",
+    "@types/react-test-renderer": "17.0.1",
+    "babel-jest": "^26.6.3",
     "husky": "^4.2.5",
-    "jest": "^26.0.1",
+    "jest": "^26.6.3",
     "lint-staged": "^10.2.2",
-    "metro-react-native-babel-preset": "^0.59.0",
-    "react-native-testing-library": "^1.7.0",
-    "react-test-renderer": "16.13.1",
+    "metro-react-native-babel-preset": "^0.64.0",
+    "react-native-testing-library": "^6.0.0",
+    "react-test-renderer": "17.0.1",
     "typescript": "^3.7.3"
   },
   "jest": {
@@ -128,7 +128,7 @@ export default withNavigationItem({
   },
   rightBarButtonItem: {
     title: 'push',
-    action: (navigator) => navigator.push('App'),
+    action: navigator => navigator.push('App'),
   },
 })(App)
 
@@ -236,16 +236,31 @@ buck-out/
     content: () => `module.exports = {
   root: true,
   extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
+  overrides: [
+    {
+      files: ['jest/*'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
+  rules: {
+    'no-shadow': 0,
+    'no-bitwise': 0,
+    'react-native/no-inline-styles': 0,
+  },
 }`,
   },
   {
     name: () => '.prettierrc.js',
     content: () => `module.exports = {
   semi: false,
+  trailingComma: 'all',
   jsxBracketSameLine: true,
   singleQuote: true,
-  trailingComma: 'all',
-  printWidth: 100,
+  printWidth: 120,
+  tabWidth: 2,
+  arrowParens: 'avoid'
 }`,
   },
   {
@@ -272,7 +287,7 @@ module.exports = {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
+        inlineRequires: true,
       },
     }),
   },
@@ -343,5 +358,57 @@ module.exports = {
 "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
     `,
+  },
+  {
+    name: () => '.vscode/extensions.json',
+    content: () => {
+      return `{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig"
+  ]
+}
+`
+    },
+  },
+  {
+    name: () => '.vscode/settings.json',
+    content: () => {
+      return `{
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+`
+    },
+  },
+  {
+    name: () => '.npmrc',
+    content: () => {
+      return `registry=https://registry.npm.taobao.org/
+`
+    },
   },
 ]
