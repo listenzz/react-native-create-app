@@ -2,18 +2,12 @@
 
 一行命令创建 React Native 项目，并和 [hybrid-navigation](https://github.com/listenzz/hybrid-navigation) 集成。
 
-## Installation
-
-```
-$ npm install -g react-native-create-app
-```
-
 ## Command-line usage
 
 Navigate into an empty directory to execute the command.
 
 ```
-$ react-native-create-app MyApp
+$ npx react-native-create-app MyApp
 ```
 
 This will create the folder `MyApp` in which the project will be created in.
