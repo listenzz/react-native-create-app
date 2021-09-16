@@ -1,7 +1,7 @@
 module.exports = platform => [
   {
     name: () => 'ios/Podfile',
-    content: ({ name }) => `platform :ios, '10.0'
+    content: ({ name }) => `platform :ios, '11.0'
 inhibit_all_warnings!
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'

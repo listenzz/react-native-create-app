@@ -32,27 +32,26 @@ module.exports = [
     ]
   },
   "dependencies": {
-    "react": "17.0.1",
-    "react-native": "^0.64.0",
+    "react": "17.0.2",
+    "react-native": "^0.65.0",
     "react-native-fast-image": "^8.1.5",
-    "hybrid-navigation": "^1.4.2"
+    "hybrid-navigation": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/runtime": "^7.13.10",
-    "@gfez/eslint-config-react-native": "^1.0.0",
-    "@types/jest": "^26.0.21",
-    "@types/react": "^17.0.1",
-    "@types/react-native": "^0.64.0",
+    "@react-native-community/eslint-config": "^3.0.0",
+    "@types/jest": "^27.0.1",
+    "@types/react": "^17.0.15",
+    "@types/react-native": "^0.65.0",
     "@types/react-test-renderer": "17.0.1",
-    "babel-jest": "^26.6.3",
-    "husky": "^4.2.5",
-    "jest": "^26.6.3",
-    "lint-staged": "^10.2.2",
-    "metro-react-native-babel-preset": "^0.64.0",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-native-codegen": "^0.0.7",
     "react-native-testing-library": "^6.0.0",
-    "react-test-renderer": "17.0.1",
-    "typescript": "^3.7.3"
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.3.5"
   },
   "jest": {
     "preset": "react-native",
@@ -235,7 +234,7 @@ buck-out/
     name: () => '.eslintrc.js',
     content: () => `module.exports = {
   root: true,
-  extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: ['@react-native-community', 'plugin:prettier/recommended', 'prettier/react'],
   overrides: [
     {
       files: ['jest/*'],
