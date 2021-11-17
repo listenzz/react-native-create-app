@@ -12,6 +12,11 @@ target '${name}' do
         :path => config[:reactNativePath],
         :hermes_enabled => false
     )
+end
+
+post_install do |installer|
+    react_native_post_install(installer)
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
 end`,
   },
   {

@@ -19,36 +19,23 @@ module.exports = [
     "tsc": "tsc --noEmit",
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && tsc",
-      "post-commit": "git update-index --again"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx,jsx}": [
-      "eslint . --fix",
-      "git add"
-    ]
-  },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "^0.65.0",
+    "react-native": "^0.66.3",
     "react-native-fast-image": "^8.1.5",
-    "hybrid-navigation": "^2.3.0"
+    "hybrid-navigation": "^2.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/runtime": "^7.13.10",
+    "@babel/core": "^7.16.0",
+    "@babel/runtime": "^7.16.0",
     "@react-native-community/eslint-config": "^3.0.0",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.15",
-    "@types/react-native": "^0.65.0",
+    "@types/react-native": "^0.66.0",
     "@types/react-test-renderer": "17.0.1",
     "babel-jest": "^27.0.6",
     "jest": "^27.0.6",
     "metro-react-native-babel-preset": "^0.66.2",
-    "react-native-codegen": "^0.0.7",
     "react-native-testing-library": "^6.0.0",
     "react-test-renderer": "17.0.2",
     "typescript": "^4.3.5"
@@ -192,6 +179,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 .project
 */.settings/
 
