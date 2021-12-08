@@ -34,6 +34,7 @@ module.exports = [
     "@types/react-native": "^0.66.0",
     "@types/react-test-renderer": "17.0.1",
     "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
     "jest": "^27.0.6",
     "metro-react-native-babel-preset": "^0.66.2",
     "react-native-testing-library": "^6.0.0",
@@ -381,7 +382,6 @@ module.exports = {
     "editor.tabSize": 2
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "eslint.format.enable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
