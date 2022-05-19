@@ -21,9 +21,9 @@ module.exports = [
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "^0.66.3",
+    "react-native": "^0.67.4",
     "react-native-fast-image": "^8.1.5",
-    "hybrid-navigation": "^2.5.1"
+    "hybrid-navigation": "^2.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
