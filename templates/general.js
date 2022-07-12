@@ -28,7 +28,7 @@ module.exports = [
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/runtime": "^7.16.0",
-    "@react-native-community/eslint-config": "^3.0.0",
+    "@react-native-community/eslint-config": "3.0.1",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.15",
     "@types/react-native": "^0.66.0",
