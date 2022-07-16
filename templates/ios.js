@@ -80,7 +80,7 @@ end`,
     archiveVersion = 1;
     classes = {
     };
-    objectVersion = 54;
+    objectVersion = 55;
     objects = {
 
 /* Begin PBXBuildFile section */
@@ -204,7 +204,7 @@ end`,
         83CBB9F71A601CBA00E9B192 /* Project object */ = {
             isa = PBXProject;
             attributes = {
-                LastUpgradeCheck = 1210;
+                LastUpgradeCheck = 1340;
                 TargetAttributes = {
                     13B07F861A680F5B00A75B9A = {
                         LastSwiftMigration = 1120;
@@ -212,7 +212,7 @@ end`,
                 };
             };
             buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "${name}" */;
-            compatibilityVersion = "Xcode 12.0";
+            compatibilityVersion = "Xcode 13.0";
             developmentRegion = en;
             hasScannedForEncodings = 0;
             knownRegions = (
@@ -381,7 +381,7 @@ end`,
                 GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
                 GCC_WARN_UNUSED_FUNCTION = YES;
                 GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+                IPHONEOS_DEPLOYMENT_TARGET = 11.0;
                 LD_RUNPATH_SEARCH_PATHS = (
                     /usr/lib/swift,
                     "$(inherited)",
@@ -439,7 +439,7 @@ end`,
                 GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
                 GCC_WARN_UNUSED_FUNCTION = YES;
                 GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+                IPHONEOS_DEPLOYMENT_TARGET = 11.0;
                 LD_RUNPATH_SEARCH_PATHS = (
                     /usr/lib/swift,
                     "$(inherited)",
