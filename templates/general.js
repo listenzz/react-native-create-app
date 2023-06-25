@@ -21,9 +21,9 @@ module.exports = [
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "^0.67.4",
+    "react-native": "^0.67.5",
     "react-native-fast-image": "^8.1.5",
-    "hybrid-navigation": "^2.9.0"
+    "hybrid-navigation": "^2.16.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -32,7 +32,7 @@ module.exports = [
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.15",
     "@types/react-native": "^0.66.0",
-    "@types/react-test-renderer": "17.0.1",
+    "@types/react-test-renderer": "17.0.2",
     "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "jest": "^27.0.6",
@@ -58,25 +58,25 @@ module.exports = [
   {
     name: () => 'index.js',
     content: ({ name }) => `import App from './App'
-import { ReactRegistry, Garden, Navigator } from 'hybrid-navigation'
+import Navigation from 'hybrid-navigation'
 import { Platform } from 'react-native'
 
 // 配置全局样式
-Garden.setStyle({
+Navigation.setDefaultOptions({
   topBarStyle: 'dark-content',
   statusBarColorAndroid: Platform.Version > 21 ? undefined : '#4A4A4A',
 })
 
 // 重要必须
-ReactRegistry.startRegisterComponent()
+Navigation.startRegisterComponent()
 
 // 注意，你的每一个页面都需要注册
-ReactRegistry.registerComponent('App', () => App)
+Navigation.registerComponent('App', () => App)
 
 // 重要必须
-ReactRegistry.endRegisterComponent()
+Navigation.endRegisterComponent()
 
-Navigator.setRoot({
+Navigation.setRoot({
   stack: {
     children: [{ screen: { moduleName: 'App' } }],
   },
