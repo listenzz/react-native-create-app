@@ -2,6 +2,8 @@
 
 一行命令创建 React Native 项目，并和 [hybrid-navigation](https://github.com/listenzz/hybrid-navigation) 集成。
 
+> 已升级到 React Native 0.83 + hybrid-navigation 3.0
+
 ## Command-line usage
 
 Navigate into an empty directory to execute the command.
